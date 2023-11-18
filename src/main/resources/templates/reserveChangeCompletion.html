@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>予約変更完了</title>
+</head>
+<body>
+<div>
+    <h1>予約の変更が完了しました。</h1>
+    <p>変更後の予約情報は以下となります。</p>
+    <div class="reserve_info">
+        <table border="1" style="border-collapse: collapse;">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>日付</th>
+                <th>時間</th>
+                <th>メニュー</th>
+                <th>お名前</th>
+                <th>メールアドレス</th>
+                <th>電話番号</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td th:text="${id}"></td>
+                <td th:text="${#temporals.format(date, 'yyyy年MM月dd日')}"></td>
+                <td th:text="${time}"></td>
+                <td th:text="${menu}"></td>
+                <td th:text="${name}"></td>
+                <td th:text="${email}"></td>
+                <td th:text="${tel}"></td>
+            </tr>
+            </tbody>
+        </table>
+        <p>予約完了メールがご登録いただいたメールに届きます。</p>
+    </div>
+    <br>
+    <h4>
+        <a th:href="@{/}">ホームに戻る</a>
+    </h4>
+</div>
+</body>
+</html>

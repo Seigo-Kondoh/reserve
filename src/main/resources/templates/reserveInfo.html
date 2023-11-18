@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <title>予約情報確認ページ</title>
+</head>
+<body>
+
+<h1><span th:text="${name}"></span> 様</h1>
+
+<h3 class="reserveInfo_headline">予約詳細</h3>
+
+<div>
+    <table border="1" style="border-collapse: collapse;">
+        <thead>
+        <tr>
+            <th>予約番号</th>
+            <th>予約日</th>
+            <th>予約時間</th>
+            <th>予約メニュー</th>
+            <th>メールアドレス</th>
+            <th>電話番号</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="reserve : ${reserve}">
+            <td th:text="${reserve.id}"></td>
+            <td th:text="${reserve.date}"></td>
+            <td th:text="${reserve.time}"></td>
+            <td th:text="${reserve.menu}"></td>
+            <td th:text="${reserve.email}"></td>
+            <td th:text="${reserve.tel}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<br>
+<div class="reserveChange">
+    <p>予約内容を変更する</p>
+    <form th:action="@{/reserveChangeForm}">
+        <p>変更したい日付を指定してください</p>
+        <p>※日付の変更がない場合でもこちらから変更をお願いいたします。</p>
+        <input type="date" name="date" th:min="${reserveDays}" required>
+        <input type="hidden" name="${reserve.id}">
+        <input type="submit" value="進む">
+    </form>
+</div>
+<br>
+
+<div class="reserveDelete">
+    <p>予約をキャンセルする</p>
+    <form th:action="@{/reserveDelete}">
+        <input type="hidden" name="${reserve.id}">
+        <input type="submit" value="予約をキャンセルはこちらから">
+    </form>
+</div>
+
+<h4>
+    <a th:href="@{/}">ホームに戻る</a>
+</h4>
+
+</body>
+</html>

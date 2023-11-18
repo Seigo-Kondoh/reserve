@@ -1,0 +1,9 @@
+CREATE TABLE IF NOT EXISTS reserve(
+id VARCHAR(8) PRIMARY KEY,
+date DATE,
+time TIME,
+menu VARCHAR(10),
+name VARCHAR(20),
+email VARCHAR(255),
+tel VARCHAR(255)
+);
